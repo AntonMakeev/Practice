@@ -31,6 +31,7 @@
         <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="1" Grid.Row="2">
             <Button x:Name="ReportingExcelButton" Style="{StaticResource MainButton}" Content="Таблица" Click="ReportingExcelButton_Click"></Button>
             <Button x:Name="BackButton" Style="{StaticResource MainButton}" Content="Назад" Click="BackButton_Click"/>
+            <TextBlock Text="Владимир Владимирович - МОЛОДЕЦ!" Style="{StaticResource MainTextBlock}" FontSize="15"/>
         </StackPanel>
     </Grid>
 </Page>
