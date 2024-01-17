@@ -1,0 +1,190 @@
+﻿<Page x:Class="CourseWork.Pages.MenuPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:CourseWork.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="800" d:DesignWidth="900"
+      Title="MenuPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="2"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2"/>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Frame x:Name="FioFrame" NavigationUIVisibility="Hidden" Grid.Column="3" Grid.Row="1"></Frame>
+        <Frame x:Name="MenuFrame" NavigationUIVisibility="Hidden" Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="4"></Frame>
+        <TextBlock x:Name="WelcomeTextBlock" Grid.Row="2" Grid.Column="2" Text="Добро пожаловать!"
+                   Foreground="{StaticResource titleColor2}"
+                               FontSize="34"
+                               FontFamily="Montserrat"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Center"/>
+        <TextBlock x:Name="DateAndTime" Grid.Column="5"
+                               Foreground="{StaticResource titleColor2}"
+                               FontSize="16"
+                               FontFamily="Montserrat"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Left"
+                               Margin="3,0,0,0"/>
+        <Border Grid.Row="1" Grid.Column="1" Grid.RowSpan="2">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0.7">
+                    <GradientStop Color="{StaticResource secondaryBackColor1}" Offset="0"/>
+                    <GradientStop Color="{StaticResource secondaryBackColor2}" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+            <StackPanel>
+
+                <!--Logo-->
+                <StackPanel Orientation="Horizontal"
+                                Height="35"
+                                Margin="30,-3,15,10">
+                    <TextBlock Text="BurgerHouse"
+                                   Foreground="{StaticResource titleColor2}"
+                                   FontSize="20"
+                                   FontFamily="Montserrat"
+                                   FontWeight="Medium"
+                                   VerticalAlignment="Center"
+                                   Margin="10,0,0,0"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel Orientation="Vertical">
+                        <Image x:Name="PhotoWorker" Visibility="Collapsed" Width="50" Height="50">
+                            <Image.Clip>
+                                <EllipseGeometry RadiusX="25" RadiusY="25" Center="25,25" />
+                            </Image.Clip>
+                        </Image>
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock x:Name="WorkerFIO" Visibility="Collapsed" Style="{StaticResource MainTextBlock}"></TextBlock>
+                    </StackPanel>
+
+                </StackPanel>
+                <!--Menu Buttons-->
+                <RadioButton x:Name="DishesButton" Style="{StaticResource menuButton}"
+                                 Tag="{StaticResource color1}"
+                             Click="DishesButton_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <fa:IconImage Icon="Hamburger" Style="{StaticResource menuButtonIcon}"/>
+                        <TextBlock Text="Продукция" Style="{StaticResource menuButtonText}"/>
+                    </StackPanel>
+                </RadioButton>
+                <RadioButton x:Name="OrderButton" Style="{StaticResource menuButton}"
+                                 Tag="{StaticResource color2}"
+                             Click="OrderButton_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <fa:IconImage Icon="BoxesPacking" Style="{StaticResource menuButtonIcon}"/>
+                        <TextBlock Text="Заказы" Style="{StaticResource menuButtonText}"/>
+                    </StackPanel>
+                </RadioButton>
+                <RadioButton x:Name="ReportingButton" Style="{StaticResource menuButton}"
+                                 Tag="{StaticResource color3}"
+                             Click="ReportingButton_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <fa:IconImage Icon="DollarSign" Style="{StaticResource menuButtonIcon}"/>
+                        <TextBlock Text="Отчетность" Style="{StaticResource menuButtonText}"/>
+                    </StackPanel>
+                </RadioButton>
+                <RadioButton x:Name="OutOrderButton" Style="{StaticResource menuButton}"
+                                 Tag="{StaticResource color3}"
+                             Click="OutOrderButton_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <fa:IconImage Icon="ShoppingBasket" Style="{StaticResource menuButtonIcon}"/>
+                        <TextBlock Text="Выдача" Style="{StaticResource menuButtonText}"/>
+                    </StackPanel>
+                </RadioButton>
+                <RadioButton x:Name="OutButton" Style="{StaticResource menuButton}"
+                                 Tag="{StaticResource color9}"
+                             Click="OutButton_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <fa:IconImage Icon="SignOut" Style="{StaticResource menuButtonIcon}"/>
+                        <TextBlock Text="Выйти" Style="{StaticResource menuButtonText}"/>
+                    </StackPanel>
+                </RadioButton>
+                
+                <!--<RadioButton x:Name="OrderButton" Style="{StaticResource menuButton}"
+                                 Tag="{StaticResource color2}"
+                             Click="OrderButton_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <fa:IconImage Icon="FirstOrderAlt" Style="{StaticResource menuButtonIcon}"/>
+                        <TextBlock Text="Чеки" Style="{StaticResource menuButtonText}"/>
+                    </StackPanel>
+                </RadioButton>
+                <RadioButton x:Name="ReceiptButton" Style="{StaticResource menuButton}" Visibility="Collapsed"
+                                 Tag="{StaticResource color3}" 
+                             Click="ReceiptButton_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <fa:IconImage Icon="Receipt" Style="{StaticResource menuButtonIcon}"/>
+                        <TextBlock Text="Рецепты" Style="{StaticResource menuButtonText}"/>
+                    </StackPanel>
+                </RadioButton>
+                <RadioButton x:Name="WorkerButton" Style="{StaticResource menuButton}"
+                                 Tag="{StaticResource color4}"
+                             Click="WorkerButton_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <fa:IconImage Icon="PeopleGroup" Style="{StaticResource menuButtonIcon}"/>
+                        <TextBlock Text="Сотрудники" Style="{StaticResource menuButtonText}"/>
+                    </StackPanel>
+                </RadioButton>
+                <RadioButton x:Name="ReportingButton" Style="{StaticResource menuButton}"
+                                 Tag="{StaticResource color6}"
+                             Click="ReportingButton_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <fa:IconImage Icon="DollarSign" Style="{StaticResource menuButtonIcon}"/>
+                        <TextBlock Text="Отчетность" Style="{StaticResource menuButtonText}"/>
+                    </StackPanel>
+                </RadioButton>
+                <RadioButton x:Name="EmailButton" Style="{StaticResource menuButton}"
+                                 Tag="{StaticResource color9}"
+                             Click="EmailButton_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <fa:IconImage Icon="Voicemail" Style="{StaticResource menuButtonIcon}"/>
+                        <TextBlock Text="Рассылка" Style="{StaticResource menuButtonText}"/>
+                    </StackPanel>
+                </RadioButton>
+                <RadioButton x:Name="ProviderButton" Style="{StaticResource menuButton}"
+                                 Tag="{StaticResource color8}"
+                             Click="ProviderButton_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <fa:IconImage Icon="SignsPost" Style="{StaticResource menuButtonIcon}"/>
+                        <TextBlock Text="Поставщики" Style="{StaticResource menuButtonText}"/>
+                    </StackPanel>
+                </RadioButton>
+                <RadioButton x:Name="PrintButton" Style="{StaticResource menuButton}"
+                                 Tag="{StaticResource color8}"
+                             Click="PrintButton_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <fa:IconImage Icon="Print" Style="{StaticResource menuButtonIcon}"/>
+                        <TextBlock Text="Печать" Style="{StaticResource menuButtonText}"/>
+                    </StackPanel>
+                </RadioButton>
+                <RadioButton x:Name="SettingButton" Style="{StaticResource menuButton}"
+                                 Tag="{StaticResource color10}"
+                             Click="SettingButton_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <fa:IconImage Icon="Headset" Style="{StaticResource menuButtonIcon}"/>
+                        <TextBlock Text="Настройки" Style="{StaticResource menuButtonText}"/>
+                    </StackPanel>
+                </RadioButton>
+                <RadioButton x:Name="OutButton" Style="{StaticResource menuButton}"
+                                 Tag="{StaticResource color8}"
+                             Click="OutButton_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <fa:IconImage Icon="SignOutAlt" Style="{StaticResource menuButtonIcon}"/>
+                        <TextBlock Text="Выйти" Style="{StaticResource menuButtonText}"/>
+                    </StackPanel>
+                </RadioButton>-->
+            </StackPanel>
+        </Border>
+    </Grid>
+</Page>

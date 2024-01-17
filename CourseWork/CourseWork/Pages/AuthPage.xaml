@@ -1,0 +1,95 @@
+﻿<Page x:Class="CourseWork.Pages.AuthPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:CourseWork.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="AuthPage">
+
+    <Grid>
+        <StackPanel x:Name="LandP" VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                    Width="350">
+            <TextBlock Text="Аунтификация" Style="{StaticResource PTextBlock}" HorizontalAlignment="Center"/>
+            <TextBlock Text="Логин"
+                               Foreground="DarkGray"
+                               FontSize="16"
+                               FontWeight="Medium"
+                               FontFamily="Montserrat"                             
+                               Margin="0,35,0,0"/>
+            <TextBox x:Name="txtUser" Text="123"
+                             FontSize="14"
+                             FontWeight="Medium"
+                             FontFamily="Montserrat"                            
+                             Foreground="White"
+                             CaretBrush="LightGray"
+                             BorderBrush="DarkGray"
+                             BorderThickness="0,0,0,2"
+                             Height="28"
+                             VerticalContentAlignment="Center"
+                             Margin="0,5,0,0"
+                             Padding="20,0,0,0">
+                <TextBox.Background>
+                    <ImageBrush ImageSource="/Resources/user-icon.png"
+                                        Stretch="None"
+                                        AlignmentX="Left"/>
+                </TextBox.Background>
+            </TextBox>
+            <TextBlock Text="Пароль"
+                               Foreground="DarkGray"
+                               FontSize="16"
+                               FontWeight="Medium"
+                               FontFamily="Montserrat"                             
+                               Margin="0,15,0,0"/>
+            <PasswordBox x:Name="txtPass" Password="123" PasswordChar="?"
+                             FontSize="14"
+                             FontWeight="Medium"
+                             FontFamily="Montserrat"                            
+                             Foreground="White"
+                             CaretBrush="LightGray"
+                             BorderBrush="DarkGray"
+                             BorderThickness="0,0,0,2"
+                             Height="28"
+                             VerticalContentAlignment="Center"
+                             Margin="0,5,0,0"
+                             Padding="20,0,0,0">
+                <PasswordBox.Background>
+                    <ImageBrush ImageSource="/Resources/key-icon.png"
+                                        Stretch="None"
+                                        AlignmentX="Left"/>
+                </PasswordBox.Background>
+            </PasswordBox>
+            <Button x:Name="EnterButton"                          
+                            Content="Войти"
+                            Foreground="White"
+                            FontSize="16"
+                            FontFamily="Montserrat"
+                            Cursor="Hand"                           
+                            Margin="0,30,0,0"
+                            Click="EnterButton_Click">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Background" Value="#462AD8"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#28AEED"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Width="100" Height="37"
+                                        CornerRadius="9"
+                                        Background="{TemplateBinding Background}">
+                            <ContentPresenter VerticalAlignment="Center"
+                                                      HorizontalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+        </StackPanel>
+    </Grid>
+</Page>

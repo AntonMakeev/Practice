@@ -1,0 +1,329 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище BurgerHouseDBModelContainer" CdmEntityContainer="BurgerHouseDBEntities">
+    <EntitySetMapping Name="Cheques">
+      <EntityTypeMapping TypeName="BurgerHouseDBModel.Cheque">
+        <MappingFragment StoreEntitySet="Cheque">
+          <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
+          <ScalarProperty Name="ChequeID" ColumnName="ChequeID" />
+          <ScalarProperty Name="ChequeDate" ColumnName="ChequeDate" />
+          <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+          <ScalarProperty Name="WorkerID" ColumnName="WorkerID" />
+          <ScalarProperty Name="OrderStatusID" ColumnName="OrderStatusID" />
+          <ScalarProperty Name="VerifingCode" ColumnName="VerifingCode" />
+          <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ChequeTabParts">
+      <EntityTypeMapping TypeName="BurgerHouseDBModel.ChequeTabPart">
+        <MappingFragment StoreEntitySet="ChequeTabPart">
+          <ScalarProperty Name="LineID" ColumnName="LineID" />
+          <ScalarProperty Name="ProductCount" ColumnName="ProductCount" />
+          <ScalarProperty Name="DishID" ColumnName="DishID" />
+          <ScalarProperty Name="ChequeID" ColumnName="ChequeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Clients">
+      <EntityTypeMapping TypeName="BurgerHouseDBModel.Client">
+        <MappingFragment StoreEntitySet="Client">
+          <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+          <ScalarProperty Name="ClientSurname" ColumnName="ClientSurname" />
+          <ScalarProperty Name="ClientName" ColumnName="ClientName" />
+          <ScalarProperty Name="ClientPatronymic" ColumnName="ClientPatronymic" />
+          <ScalarProperty Name="ClientEmal" ColumnName="ClientEmal" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ClientAuthorizationDatas">
+      <EntityTypeMapping TypeName="BurgerHouseDBModel.ClientAuthorizationData">
+        <MappingFragment StoreEntitySet="ClientAuthorizationData">
+          <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+          <ScalarProperty Name="ClientLogin" ColumnName="ClientLogin" />
+          <ScalarProperty Name="ClientPassword" ColumnName="ClientPassword" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Dishes">
+      <EntityTypeMapping TypeName="BurgerHouseDBModel.Dish">
+        <MappingFragment StoreEntitySet="Dish">
+          <ScalarProperty Name="DishID" ColumnName="DishID" />
+          <ScalarProperty Name="DishName" ColumnName="DishName" />
+          <ScalarProperty Name="DishPhoto" ColumnName="DishPhoto" />
+          <ScalarProperty Name="DishTypeID" ColumnName="DishTypeID" />
+          <ScalarProperty Name="UnitOfMeasurementID" ColumnName="UnitOfMeasurementID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DishTypes">
+      <EntityTypeMapping TypeName="BurgerHouseDBModel.DishType">
+        <MappingFragment StoreEntitySet="DishType">
+          <ScalarProperty Name="DishTypeID" ColumnName="DishTypeID" />
+          <ScalarProperty Name="DishTypeName" ColumnName="DishTypeName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ingredients">
+      <EntityTypeMapping TypeName="BurgerHouseDBModel.Ingredient">
+        <MappingFragment StoreEntitySet="Ingredient">
+          <ScalarProperty Name="IngredientID" ColumnName="IngredientID" />
+          <ScalarProperty Name="IngredientName" ColumnName="IngredientName" />
+          <ScalarProperty Name="IngredientExpirationDate" ColumnName="IngredientExpirationDate" />
+          <ScalarProperty Name="IngredientCount" ColumnName="IngredientCount" />
+          <ScalarProperty Name="UnitOfMeasurementID" ColumnName="UnitOfMeasurementID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Invoices">
+      <EntityTypeMapping TypeName="BurgerHouseDBModel.Invoice">
+        <MappingFragment StoreEntitySet="Invoice">
+          <ScalarProperty Name="InvoiceID" ColumnName="InvoiceID" />
+          <ScalarProperty Name="InvoiceDate" ColumnName="InvoiceDate" />
+          <ScalarProperty Name="SuplierID" ColumnName="SuplierID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="InvoiceTabParts">
+      <EntityTypeMapping TypeName="BurgerHouseDBModel.InvoiceTabPart">
+        <MappingFragment StoreEntitySet="InvoiceTabPart">
+          <ScalarProperty Name="LineID" ColumnName="LineID" />
+          <ScalarProperty Name="IngredientCount" ColumnName="IngredientCount" />
+          <ScalarProperty Name="IngredientID" ColumnName="IngredientID" />
+          <ScalarProperty Name="InvoiceID" ColumnName="InvoiceID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrderStatus">
+      <EntityTypeMapping TypeName="BurgerHouseDBModel.OrderStatu">
+        <MappingFragment StoreEntitySet="OrderStatus">
+          <ScalarProperty Name="OrderStatusID" ColumnName="OrderStatusID" />
+          <ScalarProperty Name="OrderStatusName" ColumnName="OrderStatusName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Prices">
+      <EntityTypeMapping TypeName="BurgerHouseDBModel.Price">
+        <MappingFragment StoreEntitySet="Price">
+          <ScalarProperty Name="PriceID" ColumnName="PriceID" />
+          <ScalarProperty Name="PriceMeaning" ColumnName="PriceMeaning" />
+          <ScalarProperty Name="PriceDate" ColumnName="PriceDate" />
+          <ScalarProperty Name="DishID" ColumnName="DishID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Receipts">
+      <EntityTypeMapping TypeName="BurgerHouseDBModel.Receipt">
+        <MappingFragment StoreEntitySet="Receipt">
+          <ScalarProperty Name="ReceiptID" ColumnName="ReceiptID" />
+          <ScalarProperty Name="ReceiptL" ColumnName="ReceiptL" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ReceiptTabParts">
+      <EntityTypeMapping TypeName="BurgerHouseDBModel.ReceiptTabPart">
+        <MappingFragment StoreEntitySet="ReceiptTabPart">
+          <ScalarProperty Name="LineID" ColumnName="LineID" />
+          <ScalarProperty Name="IngredientCount" ColumnName="IngredientCount" />
+          <ScalarProperty Name="ReceiptID" ColumnName="ReceiptID" />
+          <ScalarProperty Name="IngredientID" ColumnName="IngredientID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Supliers">
+      <EntityTypeMapping TypeName="BurgerHouseDBModel.Suplier">
+        <MappingFragment StoreEntitySet="Suplier">
+          <ScalarProperty Name="SuplierID" ColumnName="SuplierID" />
+          <ScalarProperty Name="SuplierName" ColumnName="SuplierName" />
+          <ScalarProperty Name="SuplierLegalAddres" ColumnName="SuplierLegalAddres" />
+          <ScalarProperty Name="SuplierPhone" ColumnName="SuplierPhone" />
+          <ScalarProperty Name="SuplierINN" ColumnName="SuplierINN" />
+          <ScalarProperty Name="SuplierCheckAccount" ColumnName="SuplierCheckAccount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="BurgerHouseDBModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UnitOfMeasurements">
+      <EntityTypeMapping TypeName="BurgerHouseDBModel.UnitOfMeasurement">
+        <MappingFragment StoreEntitySet="UnitOfMeasurement">
+          <ScalarProperty Name="UnitOfMeasurementID" ColumnName="UnitOfMeasurementID" />
+          <ScalarProperty Name="UnitOfMeasurementName" ColumnName="UnitOfMeasurementName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Workers">
+      <EntityTypeMapping TypeName="BurgerHouseDBModel.Worker">
+        <MappingFragment StoreEntitySet="Worker">
+          <ScalarProperty Name="WorkerID" ColumnName="WorkerID" />
+          <ScalarProperty Name="WorkerSurname" ColumnName="WorkerSurname" />
+          <ScalarProperty Name="WorkerName" ColumnName="WorkerName" />
+          <ScalarProperty Name="WorkerPatronymic" ColumnName="WorkerPatronymic" />
+          <ScalarProperty Name="WorkerPositionID" ColumnName="WorkerPositionID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WorkerAuthorizationDatas">
+      <EntityTypeMapping TypeName="BurgerHouseDBModel.WorkerAuthorizationData">
+        <MappingFragment StoreEntitySet="WorkerAuthorizationData">
+          <ScalarProperty Name="WorkerID" ColumnName="WorkerID" />
+          <ScalarProperty Name="WorkerLogin" ColumnName="WorkerLogin" />
+          <ScalarProperty Name="WorkerPassword" ColumnName="WorkerPassword" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WorkerPositions">
+      <EntityTypeMapping TypeName="BurgerHouseDBModel.WorkerPosition">
+        <MappingFragment StoreEntitySet="WorkerPosition">
+          <ScalarProperty Name="WorkerPositionID" ColumnName="WorkerPositionID" />
+          <ScalarProperty Name="WorkerPositionName" ColumnName="WorkerPositionName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AllOrders">
+      <EntityTypeMapping TypeName="BurgerHouseDBModel.AllOrder">
+        <MappingFragment StoreEntitySet="AllOrders">
+          <ScalarProperty Name="ChequeID" ColumnName="ChequeID" />
+          <ScalarProperty Name="ChequeDate" ColumnName="ChequeDate" />
+          <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+          <ScalarProperty Name="OrderStatusName" ColumnName="OrderStatusName" />
+          <ScalarProperty Name="VerifingCode" ColumnName="VerifingCode" />
+          <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+          <ScalarProperty Name="Summ" ColumnName="Summ" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionName="Хранилище BurgerHouseDBModel.getClientByID" FunctionImportName="getClientByID">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BurgerHouseDBModel.getClientByID_Result">
+          <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+          <ScalarProperty Name="ClientSurname" ColumnName="ClientSurname" />
+          <ScalarProperty Name="ClientName" ColumnName="ClientName" />
+          <ScalarProperty Name="ClientPatronymic" ColumnName="ClientPatronymic" />
+          <ScalarProperty Name="ClientEmal" ColumnName="ClientEmal" />
+          <ScalarProperty Name="ClientLogin" ColumnName="ClientLogin" />
+          <ScalarProperty Name="ClientPassword" ColumnName="ClientPassword" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionName="Хранилище BurgerHouseDBModel.getProductsInOrder" FunctionImportName="getProductsInOrder">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BurgerHouseDBModel.getProductsInOrder_Result">
+          <ScalarProperty Name="DishName" ColumnName="DishName" />
+          <ScalarProperty Name="DishPhoto" ColumnName="DishPhoto" />
+          <ScalarProperty Name="DishTypeName" ColumnName="DishTypeName" />
+          <ScalarProperty Name="PriceMeaning" ColumnName="PriceMeaning" />
+          <ScalarProperty Name="ProductCount" ColumnName="ProductCount" />
+          <ScalarProperty Name="UnitOfMeasurementName" ColumnName="UnitOfMeasurementName" />
+          <ScalarProperty Name="DishID" ColumnName="DishID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionName="Хранилище BurgerHouseDBModel.getUsersOrders" FunctionImportName="getUsersOrders">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BurgerHouseDBModel.getUsersOrders_Result">
+          <ScalarProperty Name="ChequeID" ColumnName="ChequeID" />
+          <ScalarProperty Name="ChequeDate" ColumnName="ChequeDate" />
+          <ScalarProperty Name="OrderStatusName" ColumnName="OrderStatusName" />
+          <ScalarProperty Name="VerifingCode" ColumnName="VerifingCode" />
+          <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="AddClient" FunctionName="Хранилище BurgerHouseDBModel.AddClient" />
+    <FunctionImportMapping FunctionImportName="AddDish" FunctionName="Хранилище BurgerHouseDBModel.AddDish" />
+    <FunctionImportMapping FunctionImportName="AddOrder" FunctionName="Хранилище BurgerHouseDBModel.AddOrder" />
+    <FunctionImportMapping FunctionImportName="AddProductInOrder" FunctionName="Хранилище BurgerHouseDBModel.AddProductInOrder" />
+    <FunctionImportMapping FunctionImportName="AddRowInReceipt" FunctionName="Хранилище BurgerHouseDBModel.AddRowInReceipt" />
+    <FunctionImportMapping FunctionImportName="EditClient" FunctionName="Хранилище BurgerHouseDBModel.EditClient" />
+    <FunctionImportMapping FunctionImportName="EditOrder" FunctionName="Хранилище BurgerHouseDBModel.EditOrder" />
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="Хранилище BurgerHouseDBModel.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="Хранилище BurgerHouseDBModel.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="Хранилище BurgerHouseDBModel.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="Хранилище BurgerHouseDBModel.sp_helpdiagramdefinition">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BurgerHouseDBModel.sp_helpdiagramdefinition_Result">
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="Хранилище BurgerHouseDBModel.sp_helpdiagrams">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BurgerHouseDBModel.sp_helpdiagrams_Result">
+          <ScalarProperty Name="Database" ColumnName="Database" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="Хранилище BurgerHouseDBModel.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="Хранилище BurgerHouseDBModel.sp_upgraddiagrams" />
+    <EntitySetMapping Name="getCountOfTypeDishes">
+      <EntityTypeMapping TypeName="BurgerHouseDBModel.getCountOfTypeDish">
+        <MappingFragment StoreEntitySet="getCountOfTypeDish">
+          <ScalarProperty Name="Summ" ColumnName="Summ" />
+          <ScalarProperty Name="DishTypeName" ColumnName="DishTypeName" />
+          <ScalarProperty Name="DishTypeID" ColumnName="DishTypeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TableInfoes">
+      <EntityTypeMapping TypeName="BurgerHouseDBModel.TableInfo">
+        <MappingFragment StoreEntitySet="TableInfo">
+          <ScalarProperty Name="ClientEmal" ColumnName="ClientEmal" />
+          <ScalarProperty Name="WorkerPositionName" ColumnName="WorkerPositionName" />
+          <ScalarProperty Name="WorkerPatronymic" ColumnName="WorkerPatronymic" />
+          <ScalarProperty Name="WorkerName" ColumnName="WorkerName" />
+          <ScalarProperty Name="WorkerSurname" ColumnName="WorkerSurname" />
+          <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
+          <ScalarProperty Name="PriceMeaning" ColumnName="PriceMeaning" />
+          <ScalarProperty Name="DishName" ColumnName="DishName" />
+          <ScalarProperty Name="DishID" ColumnName="DishID" />
+          <ScalarProperty Name="ProductCount" ColumnName="ProductCount" />
+          <ScalarProperty Name="ChequeDate" ColumnName="ChequeDate" />
+          <ScalarProperty Name="ChequeID" ColumnName="ChequeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="CalculateTotalAndUpdate" FunctionName="Хранилище BurgerHouseDBModel.CalculateTotalAndUpdate" />
+    <FunctionImportMapping FunctionImportName="AddInOrderOffline" FunctionName="Хранилище BurgerHouseDBModel.AddInOrderOffline" />
+    <EntitySetMapping Name="InfoOrderWhereIDs">
+      <EntityTypeMapping TypeName="BurgerHouseDBModel.InfoOrderWhereID">
+        <MappingFragment StoreEntitySet="InfoOrderWhereID">
+          <ScalarProperty Name="ProductCount" ColumnName="ProductCount" />
+          <ScalarProperty Name="DishPhoto" ColumnName="DishPhoto" />
+          <ScalarProperty Name="DishName" ColumnName="DishName" />
+          <ScalarProperty Name="ChequeID" ColumnName="ChequeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="usp_DeleteFieldById" FunctionName="Хранилище BurgerHouseDBModel.usp_DeleteFieldById" />
+    <EntitySetMapping Name="DishesViews">
+      <EntityTypeMapping TypeName="BurgerHouseDBModel.DishesView">
+        <MappingFragment StoreEntitySet="DishesView">
+          <ScalarProperty Name="MaxCount" ColumnName="MaxCount" />
+          <ScalarProperty Name="IsEnough" ColumnName="IsEnough" />
+          <ScalarProperty Name="Composition" ColumnName="Composition" />
+          <ScalarProperty Name="PriceMeaning" ColumnName="PriceMeaning" />
+          <ScalarProperty Name="UnitOfMeasurementName" ColumnName="UnitOfMeasurementName" />
+          <ScalarProperty Name="DishTypeName" ColumnName="DishTypeName" />
+          <ScalarProperty Name="DishPhoto" ColumnName="DishPhoto" />
+          <ScalarProperty Name="DishName" ColumnName="DishName" />
+          <ScalarProperty Name="DishID" ColumnName="DishID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,115 @@
+﻿<Page x:Class="CourseWork.Pages.DishesPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:CourseWork.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="800" d:DesignWidth="1500"
+      Title="DishesPage" Loaded="Page_Loaded">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150*"/>
+            <ColumnDefinition Width="1250*"/>
+            <ColumnDefinition Width="150*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20*"/>
+            <RowDefinition Height="100*"/>
+            <RowDefinition Height="550*"/>
+            <RowDefinition Height="130*"/>
+        </Grid.RowDefinitions>
+        <ListView x:Name="DishesListView" Grid.Row="2" Grid.Column="1" SelectionMode="Multiple" Cursor="">
+            <!--<ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="Yellow"/>
+                        </Trigger>
+                        <Trigger Property="IsFocused" Value="True">
+                            <Setter Property="Background" Value="Yellow"/>
+                        </Trigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsMouseOver" Value="True"/>
+                                <Condition Property="IsSelected" Value="True"/>
+                            </MultiTrigger.Conditions>
+                            <Setter Property="Background" Value="Blue"/>
+                        </MultiTrigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsFocused" Value="True"/>
+                                <Condition Property="IsSelected" Value="True"/>
+                            </MultiTrigger.Conditions>
+                            <Setter Property="Background" Value="Blue"/>
+                        </MultiTrigger>
+                    </Style.Triggers>
+                </Style>
+            </ListView.ItemContainerStyle>-->
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="ListViewItem">
+                                <Border x:Name="border"
+                                Background="{TemplateBinding Background}">
+                                    <ContentPresenter />
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsSelected" Value="True">
+                                        <Setter TargetName="border" Property="Background" Value="Aqua"/>
+                                    </Trigger>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter TargetName="border" Property="Background" Value="LightGray"/>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </ListView.ItemContainerStyle>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal" Margin="5">
+                        <StackPanel Orientation="Vertical">
+                            <Image Source="{Binding PhotoDish}" Width="150" Height="150" Margin="5"></Image>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock Text="Наименование:" Style="{StaticResource MainTextBlock}"></TextBlock>
+                            <TextBlock Text="Стоимость:" Style="{StaticResource MainTextBlock}"></TextBlock>
+                            <TextBlock Text="Тип:" Style="{StaticResource MainTextBlock}"/>
+                            <TextBlock Text="Единица измерения:" Style="{StaticResource MainTextBlock}"/>
+                            <TextBlock Text="Количество ингредиент:" Style="{StaticResource MainTextBlock}"/>
+                            <TextBlock Text="Состав:" Style="{StaticResource MainTextBlock}"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock Text="{Binding DishName}" Style="{StaticResource MainTextBlock}"></TextBlock>
+                            <TextBlock Text="{Binding PriceMeaning, StringFormat={}{0:N2} р.}" Style="{StaticResource MainTextBlock}"></TextBlock>
+                            <TextBlock Text="{Binding DishTypeName}" Style="{StaticResource MainTextBlock}"/>
+                            <TextBlock Text="{Binding UnitOfMeasurementName}" Style="{StaticResource MainTextBlock}"/>
+                            <TextBlock Text="{Binding IsEnough}" Style="{StaticResource MainTextBlock}"/>
+                            <TextBlock Text="{Binding Composition}" Style="{StaticResource MainTextBlock}"/>
+                        </StackPanel>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <StackPanel x:Name="ButtonsDishes" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
+            <Button x:Name="ButtonAddDish" Style="{StaticResource MainButton}" Content="Добавить" Click="ButtonAddDish_Click"/>
+            <Button x:Name="ButtonEditDish" Style="{StaticResource MainButton}" Content="Редактировать" Click="ButtonEditDish_Click"/>
+            <Button x:Name="ButtonDeleteDish" Style="{StaticResource MainButton}" Content="Удалить" Click="ButtonDeleteDish_Click"/>
+            <Button x:Name="ButtonInBasket" Style="{StaticResource MainButton}" Content="В заказ" Click="ButtonInBasket_Click"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center">
+            <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10">
+                <TextBlock Text="Поиск" Style="{StaticResource MainTextBlock}" HorizontalAlignment="Center"/>
+                <TextBox x:Name="SearchDishesTextBox" TextChanged="SearchDishesTextBox_TextChanged" Style="{StaticResource MainTextBox}"/>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10">
+                <TextBlock Style="{StaticResource MainTextBlock}" Text="Фильтрация" HorizontalAlignment="Center"/>
+                <ComboBox x:Name="FilterDishesComboBox" SelectionChanged="FilterDishesComboBox_SelectionChanged" DisplayMemberPath="DishTypeName" Style="{StaticResource MainComboBox}"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>

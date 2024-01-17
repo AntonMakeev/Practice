@@ -1,0 +1,50 @@
+﻿<Page x:Class="CourseWork.Pages.BasketPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:CourseWork.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="BasketPage" Loaded="Page_Loaded">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150*"/>
+            <ColumnDefinition Width="1250*"/>
+            <ColumnDefinition Width="150*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20*"/>
+            <RowDefinition Height="100*"/>
+            <RowDefinition Height="550*"/>
+            <RowDefinition Height="130*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="1" Margin="5" VerticalAlignment="Bottom" HorizontalAlignment="Left">
+            <TextBlock Text="Почта клиента" Style="{StaticResource MainTextBlock}"/>
+            <TextBox x:Name="EmailTextBox" Style="{StaticResource MainTextBox}"/>
+        </StackPanel>
+        
+        <ListView x:Name="BasketListView" Grid.Row="2" Grid.Column="1">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal" Margin="5">
+                        <Image Source="{Binding PhotoDish}" Width="70" Height="90" Margin="5"></Image>
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock Text="Наименование:" Style="{StaticResource MainTextBlock}"></TextBlock>
+                            <TextBlock Text="Стоимость:" Style="{StaticResource MainTextBlock}"></TextBlock>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock Text="{Binding DishName}" Style="{StaticResource MainTextBlock}"></TextBlock>
+                            <TextBlock Text="{Binding PriceMeaning, StringFormat={}{0:N2} р.}" Style="{StaticResource MainTextBlock}"></TextBlock>
+                        </StackPanel>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <StackPanel Orientation="Horizontal" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Button x:Name="AddChequeButton" Style="{StaticResource MainButton}" Content="Оформить" Click="AddChequeButton_Click"/>
+            <Button x:Name="BackButton" Style="{StaticResource MainButton}" Content="Назад" Click="BackButton_Click"/>
+        </StackPanel>
+    </Grid>
+</Page>

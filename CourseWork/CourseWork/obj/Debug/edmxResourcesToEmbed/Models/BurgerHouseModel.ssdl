@@ -1,0 +1,747 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище BurgerHouseDBModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Cheque">
+    <Key>
+      <PropertyRef Name="ChequeID" />
+    </Key>
+    <Property Name="ChequeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ChequeDate" Type="datetime" />
+    <Property Name="ClientID" Type="int" />
+    <Property Name="WorkerID" Type="int" />
+    <Property Name="OrderStatusID" Type="int" />
+    <Property Name="VerifingCode" Type="nvarchar" MaxLength="3" />
+    <Property Name="OrderDate" Type="datetime" />
+    <Property Name="TotalPrice" Type="money" />
+  </EntityType>
+  <EntityType Name="ChequeTabPart">
+    <Key>
+      <PropertyRef Name="LineID" />
+    </Key>
+    <Property Name="LineID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProductCount" Type="int" />
+    <Property Name="DishID" Type="int" />
+    <Property Name="ChequeID" Type="int" />
+  </EntityType>
+  <EntityType Name="Client">
+    <Key>
+      <PropertyRef Name="ClientID" />
+    </Key>
+    <Property Name="ClientID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ClientSurname" Type="nvarchar" MaxLength="50" />
+    <Property Name="ClientName" Type="nvarchar" MaxLength="50" />
+    <Property Name="ClientPatronymic" Type="nvarchar" MaxLength="50" />
+    <Property Name="ClientEmal" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="ClientAuthorizationData">
+    <Key>
+      <PropertyRef Name="ClientID" />
+    </Key>
+    <Property Name="ClientID" Type="int" Nullable="false" />
+    <Property Name="ClientLogin" Type="nvarchar" MaxLength="50" />
+    <Property Name="ClientPassword" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Dish">
+    <Key>
+      <PropertyRef Name="DishID" />
+    </Key>
+    <Property Name="DishID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DishName" Type="nvarchar" MaxLength="50" />
+    <Property Name="DishPhoto" Type="varbinary(max)" />
+    <Property Name="DishTypeID" Type="int" />
+    <Property Name="UnitOfMeasurementID" Type="int" />
+  </EntityType>
+  <EntityType Name="DishType">
+    <Key>
+      <PropertyRef Name="DishTypeID" />
+    </Key>
+    <Property Name="DishTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DishTypeName" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Ingredient">
+    <Key>
+      <PropertyRef Name="IngredientID" />
+    </Key>
+    <Property Name="IngredientID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IngredientName" Type="nvarchar" MaxLength="50" />
+    <Property Name="IngredientExpirationDate" Type="datetime" />
+    <Property Name="IngredientCount" Type="int" />
+    <Property Name="UnitOfMeasurementID" Type="int" />
+  </EntityType>
+  <EntityType Name="Invoice">
+    <Key>
+      <PropertyRef Name="InvoiceID" />
+    </Key>
+    <Property Name="InvoiceID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="InvoiceDate" Type="datetime" />
+    <Property Name="SuplierID" Type="int" />
+  </EntityType>
+  <EntityType Name="InvoiceTabPart">
+    <Key>
+      <PropertyRef Name="LineID" />
+    </Key>
+    <Property Name="LineID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IngredientCount" Type="int" />
+    <Property Name="IngredientID" Type="int" />
+    <Property Name="InvoiceID" Type="int" />
+  </EntityType>
+  <EntityType Name="OrderStatus">
+    <Key>
+      <PropertyRef Name="OrderStatusID" />
+    </Key>
+    <Property Name="OrderStatusID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OrderStatusName" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Price">
+    <Key>
+      <PropertyRef Name="PriceID" />
+    </Key>
+    <Property Name="PriceID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PriceMeaning" Type="money" />
+    <Property Name="PriceDate" Type="datetime" />
+    <Property Name="DishID" Type="int" />
+  </EntityType>
+  <EntityType Name="Receipt">
+    <Key>
+      <PropertyRef Name="ReceiptID" />
+    </Key>
+    <Property Name="ReceiptID" Type="int" Nullable="false" />
+    <Property Name="ReceiptL" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="ReceiptTabPart">
+    <Key>
+      <PropertyRef Name="LineID" />
+    </Key>
+    <Property Name="LineID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IngredientCount" Type="int" />
+    <Property Name="ReceiptID" Type="int" />
+    <Property Name="IngredientID" Type="int" />
+  </EntityType>
+  <EntityType Name="Suplier">
+    <Key>
+      <PropertyRef Name="SuplierID" />
+    </Key>
+    <Property Name="SuplierID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SuplierName" Type="nvarchar" MaxLength="50" />
+    <Property Name="SuplierLegalAddres" Type="nvarchar(max)" />
+    <Property Name="SuplierPhone" Type="nvarchar" MaxLength="50" />
+    <Property Name="SuplierINN" Type="nvarchar" MaxLength="12" />
+    <Property Name="SuplierCheckAccount" Type="nvarchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="UnitOfMeasurement">
+    <Key>
+      <PropertyRef Name="UnitOfMeasurementID" />
+    </Key>
+    <Property Name="UnitOfMeasurementID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UnitOfMeasurementName" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Worker">
+    <Key>
+      <PropertyRef Name="WorkerID" />
+    </Key>
+    <Property Name="WorkerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="WorkerSurname" Type="nvarchar" MaxLength="50" />
+    <Property Name="WorkerName" Type="nvarchar" MaxLength="50" />
+    <Property Name="WorkerPatronymic" Type="nvarchar" MaxLength="50" />
+    <Property Name="WorkerPositionID" Type="int" />
+  </EntityType>
+  <EntityType Name="WorkerAuthorizationData">
+    <Key>
+      <PropertyRef Name="WorkerID" />
+    </Key>
+    <Property Name="WorkerID" Type="int" Nullable="false" />
+    <Property Name="WorkerLogin" Type="nvarchar" MaxLength="50" />
+    <Property Name="WorkerPassword" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="WorkerPosition">
+    <Key>
+      <PropertyRef Name="WorkerPositionID" />
+    </Key>
+    <Property Name="WorkerPositionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="WorkerPositionName" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "BurgerHouseDB.dbo.AllOrders" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+  <EntityType Name="AllOrders">
+    <Key>
+      <PropertyRef Name="ChequeID" />
+    </Key>
+    <Property Name="ChequeID" Type="int" Nullable="false" />
+    <Property Name="ChequeDate" Type="datetime" />
+    <Property Name="OrderDate" Type="datetime" />
+    <Property Name="OrderStatusName" Type="nvarchar" MaxLength="50" />
+    <Property Name="VerifingCode" Type="nvarchar" MaxLength="3" />
+    <Property Name="ClientID" Type="int" />
+    <Property Name="Summ" Type="money" />
+  </EntityType>
+  <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "BurgerHouseDB.dbo.DishesView" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+  <EntityType Name="DishesView">
+    <Key>
+      <PropertyRef Name="DishID" />
+    </Key>
+    <Property Name="DishID" Type="int" Nullable="false" />
+    <Property Name="DishName" Type="nvarchar" MaxLength="50" />
+    <Property Name="DishPhoto" Type="varbinary(max)" />
+    <Property Name="DishTypeName" Type="nvarchar" MaxLength="50" />
+    <Property Name="UnitOfMeasurementName" Type="nvarchar" MaxLength="50" />
+    <Property Name="PriceMeaning" Type="money" />
+    <Property Name="Composition" Type="nvarchar" MaxLength="512" />
+    <Property Name="IsEnough" Type="nvarchar" MaxLength="10" />
+    <Property Name="MaxCount" Type="int" />
+  </EntityType>
+  <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "BurgerHouseDB.dbo.getCountOfTypeDish" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+  <EntityType Name="getCountOfTypeDish">
+    <Key>
+      <PropertyRef Name="DishTypeID" />
+    </Key>
+    <Property Name="DishTypeID" Type="int" Nullable="false" />
+    <Property Name="DishTypeName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Summ" Type="int" />
+  </EntityType>
+  <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "BurgerHouseDB.dbo.InfoOrderWhereID" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+  <EntityType Name="InfoOrderWhereID">
+    <Key>
+      <PropertyRef Name="ChequeID" />
+    </Key>
+    <Property Name="ChequeID" Type="int" Nullable="false" />
+    <Property Name="DishName" Type="nvarchar" MaxLength="50" />
+    <Property Name="DishPhoto" Type="varbinary(max)" />
+    <Property Name="ProductCount" Type="int" />
+  </EntityType>
+  <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "BurgerHouseDB.dbo.TableInfo" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+  <EntityType Name="TableInfo">
+    <Key>
+      <PropertyRef Name="ChequeID" />
+      <PropertyRef Name="DishID" />
+    </Key>
+    <Property Name="ChequeID" Type="int" Nullable="false" />
+    <Property Name="ChequeDate" Type="datetime" />
+    <Property Name="ProductCount" Type="int" />
+    <Property Name="DishID" Type="int" Nullable="false" />
+    <Property Name="DishName" Type="nvarchar" MaxLength="50" />
+    <Property Name="PriceMeaning" Type="money" />
+    <Property Name="TotalPrice" Type="money" />
+    <Property Name="WorkerSurname" Type="nvarchar" MaxLength="50" />
+    <Property Name="WorkerName" Type="nvarchar" MaxLength="50" />
+    <Property Name="WorkerPatronymic" Type="nvarchar" MaxLength="50" />
+    <Property Name="WorkerPositionName" Type="nvarchar" MaxLength="50" />
+    <Property Name="ClientEmal" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK_Cheque_Client">
+    <End Role="Client" Type="Self.Client" Multiplicity="0..1" />
+    <End Role="Cheque" Type="Self.Cheque" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Client">
+        <PropertyRef Name="ClientID" />
+      </Principal>
+      <Dependent Role="Cheque">
+        <PropertyRef Name="ClientID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Cheque_OrderStatus">
+    <End Role="OrderStatus" Type="Self.OrderStatus" Multiplicity="0..1" />
+    <End Role="Cheque" Type="Self.Cheque" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OrderStatus">
+        <PropertyRef Name="OrderStatusID" />
+      </Principal>
+      <Dependent Role="Cheque">
+        <PropertyRef Name="OrderStatusID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Cheque_Worker">
+    <End Role="Worker" Type="Self.Worker" Multiplicity="0..1" />
+    <End Role="Cheque" Type="Self.Cheque" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Worker">
+        <PropertyRef Name="WorkerID" />
+      </Principal>
+      <Dependent Role="Cheque">
+        <PropertyRef Name="WorkerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ChequeTabPart_Cheque">
+    <End Role="Cheque" Type="Self.Cheque" Multiplicity="0..1" />
+    <End Role="ChequeTabPart" Type="Self.ChequeTabPart" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cheque">
+        <PropertyRef Name="ChequeID" />
+      </Principal>
+      <Dependent Role="ChequeTabPart">
+        <PropertyRef Name="ChequeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ChequeTabPart_Dish">
+    <End Role="Dish" Type="Self.Dish" Multiplicity="0..1" />
+    <End Role="ChequeTabPart" Type="Self.ChequeTabPart" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Dish">
+        <PropertyRef Name="DishID" />
+      </Principal>
+      <Dependent Role="ChequeTabPart">
+        <PropertyRef Name="DishID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ClientAuthorizationData_Client">
+    <End Role="Client" Type="Self.Client" Multiplicity="1" />
+    <End Role="ClientAuthorizationData" Type="Self.ClientAuthorizationData" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Client">
+        <PropertyRef Name="ClientID" />
+      </Principal>
+      <Dependent Role="ClientAuthorizationData">
+        <PropertyRef Name="ClientID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Dish_DishType">
+    <End Role="DishType" Type="Self.DishType" Multiplicity="0..1" />
+    <End Role="Dish" Type="Self.Dish" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DishType">
+        <PropertyRef Name="DishTypeID" />
+      </Principal>
+      <Dependent Role="Dish">
+        <PropertyRef Name="DishTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Dish_UnitOfMeasurement">
+    <End Role="UnitOfMeasurement" Type="Self.UnitOfMeasurement" Multiplicity="0..1" />
+    <End Role="Dish" Type="Self.Dish" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UnitOfMeasurement">
+        <PropertyRef Name="UnitOfMeasurementID" />
+      </Principal>
+      <Dependent Role="Dish">
+        <PropertyRef Name="UnitOfMeasurementID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Ingredient_UnitOfMeasurement">
+    <End Role="UnitOfMeasurement" Type="Self.UnitOfMeasurement" Multiplicity="0..1" />
+    <End Role="Ingredient" Type="Self.Ingredient" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UnitOfMeasurement">
+        <PropertyRef Name="UnitOfMeasurementID" />
+      </Principal>
+      <Dependent Role="Ingredient">
+        <PropertyRef Name="UnitOfMeasurementID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Invoice_Suplier">
+    <End Role="Suplier" Type="Self.Suplier" Multiplicity="0..1" />
+    <End Role="Invoice" Type="Self.Invoice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Suplier">
+        <PropertyRef Name="SuplierID" />
+      </Principal>
+      <Dependent Role="Invoice">
+        <PropertyRef Name="SuplierID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_InvoiceTabPart_Ingredient">
+    <End Role="Ingredient" Type="Self.Ingredient" Multiplicity="0..1" />
+    <End Role="InvoiceTabPart" Type="Self.InvoiceTabPart" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ingredient">
+        <PropertyRef Name="IngredientID" />
+      </Principal>
+      <Dependent Role="InvoiceTabPart">
+        <PropertyRef Name="IngredientID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_InvoiceTabPart_Invoice">
+    <End Role="Invoice" Type="Self.Invoice" Multiplicity="0..1" />
+    <End Role="InvoiceTabPart" Type="Self.InvoiceTabPart" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Invoice">
+        <PropertyRef Name="InvoiceID" />
+      </Principal>
+      <Dependent Role="InvoiceTabPart">
+        <PropertyRef Name="InvoiceID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Price_Dish">
+    <End Role="Dish" Type="Self.Dish" Multiplicity="0..1" />
+    <End Role="Price" Type="Self.Price" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Dish">
+        <PropertyRef Name="DishID" />
+      </Principal>
+      <Dependent Role="Price">
+        <PropertyRef Name="DishID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Receipt_Dish">
+    <End Role="Dish" Type="Self.Dish" Multiplicity="1" />
+    <End Role="Receipt" Type="Self.Receipt" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Dish">
+        <PropertyRef Name="DishID" />
+      </Principal>
+      <Dependent Role="Receipt">
+        <PropertyRef Name="ReceiptID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ReceiptTabPart_Ingredient">
+    <End Role="Ingredient" Type="Self.Ingredient" Multiplicity="0..1" />
+    <End Role="ReceiptTabPart" Type="Self.ReceiptTabPart" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ingredient">
+        <PropertyRef Name="IngredientID" />
+      </Principal>
+      <Dependent Role="ReceiptTabPart">
+        <PropertyRef Name="IngredientID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ReceiptTabPart_Receipt1">
+    <End Role="Receipt" Type="Self.Receipt" Multiplicity="0..1" />
+    <End Role="ReceiptTabPart" Type="Self.ReceiptTabPart" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Receipt">
+        <PropertyRef Name="ReceiptID" />
+      </Principal>
+      <Dependent Role="ReceiptTabPart">
+        <PropertyRef Name="ReceiptID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Worker_WorkerPosition">
+    <End Role="WorkerPosition" Type="Self.WorkerPosition" Multiplicity="0..1" />
+    <End Role="Worker" Type="Self.Worker" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WorkerPosition">
+        <PropertyRef Name="WorkerPositionID" />
+      </Principal>
+      <Dependent Role="Worker">
+        <PropertyRef Name="WorkerPositionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WorkerAuthorizationData_Worker">
+    <End Role="Worker" Type="Self.Worker" Multiplicity="1" />
+    <End Role="WorkerAuthorizationData" Type="Self.WorkerAuthorizationData" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Worker">
+        <PropertyRef Name="WorkerID" />
+      </Principal>
+      <Dependent Role="WorkerAuthorizationData">
+        <PropertyRef Name="WorkerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="AddClient" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="surname" Type="nvarchar" Mode="In" />
+    <Parameter Name="name" Type="nvarchar" Mode="In" />
+    <Parameter Name="patronymic" Type="nvarchar" Mode="In" />
+    <Parameter Name="email" Type="nvarchar" Mode="In" />
+    <Parameter Name="login" Type="nvarchar" Mode="In" />
+    <Parameter Name="password" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="AddDish" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="dishname" Type="nvarchar" Mode="In" />
+    <Parameter Name="dishphoto" Type="varbinary(max)" Mode="In" />
+    <Parameter Name="dishtype" Type="int" Mode="In" />
+    <Parameter Name="unitofmeas" Type="int" Mode="In" />
+    <Parameter Name="price" Type="money" Mode="In" />
+  </Function>
+  <Function Name="AddInOrderOffline" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="workerid" Type="int" Mode="In" />
+    <Parameter Name="statusid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="AddOrder" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="client" Type="int" Mode="In" />
+    <Parameter Name="verifingcode" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="AddProductInOrder" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="orderid" Type="int" Mode="In" />
+    <Parameter Name="productid" Type="int" Mode="In" />
+    <Parameter Name="count" Type="int" Mode="In" />
+  </Function>
+  <Function Name="AddRowInReceipt" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="receiptid" Type="int" Mode="In" />
+    <Parameter Name="count" Type="int" Mode="In" />
+    <Parameter Name="ingredient" Type="int" Mode="In" />
+  </Function>
+  <Function Name="CalculateTotalAndUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="EditClient" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="surname" Type="nvarchar" Mode="In" />
+    <Parameter Name="name" Type="nvarchar" Mode="In" />
+    <Parameter Name="patronymic" Type="nvarchar" Mode="In" />
+    <Parameter Name="email" Type="nvarchar" Mode="In" />
+    <Parameter Name="login" Type="nvarchar" Mode="In" />
+    <Parameter Name="password" Type="nvarchar" Mode="In" />
+    <Parameter Name="clientid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="EditOrder" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="orderstatus" Type="int" Mode="In" />
+    <Parameter Name="orderid" Type="int" Mode="In" />
+    <Parameter Name="workerid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="getClientByID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="clientid" Type="int" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="ClientID" Type="int" Nullable="false" />
+          <Property Name="ClientSurname" Type="nvarchar" MaxLength="50" />
+          <Property Name="ClientName" Type="nvarchar" MaxLength="50" />
+          <Property Name="ClientPatronymic" Type="nvarchar" MaxLength="50" />
+          <Property Name="ClientEmal" Type="nvarchar" MaxLength="50" />
+          <Property Name="ClientLogin" Type="nvarchar" MaxLength="50" />
+          <Property Name="ClientPassword" Type="nvarchar" MaxLength="50" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="getIngredientsInDish" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="nvarchar">
+    <Parameter Name="dishid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="getProductsInOrder" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="orderid" Type="int" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="DishName" Type="nvarchar" MaxLength="50" />
+          <Property Name="DishPhoto" Type="varbinary(max)" />
+          <Property Name="DishTypeName" Type="nvarchar" MaxLength="50" />
+          <Property Name="PriceMeaning" Type="money" />
+          <Property Name="ProductCount" Type="int" />
+          <Property Name="UnitOfMeasurementName" Type="nvarchar" MaxLength="50" />
+          <Property Name="DishID" Type="int" Nullable="false" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="getSumOfOrder" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="money">
+    <Parameter Name="orderid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="getUsersOrders" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="clientid" Type="int" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="ChequeID" Type="int" Nullable="false" />
+          <Property Name="ChequeDate" Type="datetime" />
+          <Property Name="OrderStatusName" Type="nvarchar" MaxLength="50" />
+          <Property Name="VerifingCode" Type="nvarchar" MaxLength="3" />
+          <Property Name="OrderDate" Type="datetime" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="isIngredientsEnough" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="nvarchar">
+    <Parameter Name="dishid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="MaxCountOfDish" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
+    <Parameter Name="dishid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="usp_DeleteFieldById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DishId" Type="int" Mode="In" />
+  </Function>
+  <EntityContainer Name="Хранилище BurgerHouseDBModelContainer">
+    <EntitySet Name="Cheque" EntityType="Self.Cheque" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ChequeTabPart" EntityType="Self.ChequeTabPart" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ClientAuthorizationData" EntityType="Self.ClientAuthorizationData" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Dish" EntityType="Self.Dish" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DishType" EntityType="Self.DishType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Ingredient" EntityType="Self.Ingredient" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Invoice" EntityType="Self.Invoice" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="InvoiceTabPart" EntityType="Self.InvoiceTabPart" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OrderStatus" EntityType="Self.OrderStatus" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Price" EntityType="Self.Price" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Receipt" EntityType="Self.Receipt" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ReceiptTabPart" EntityType="Self.ReceiptTabPart" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Suplier" EntityType="Self.Suplier" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UnitOfMeasurement" EntityType="Self.UnitOfMeasurement" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Worker" EntityType="Self.Worker" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="WorkerAuthorizationData" EntityType="Self.WorkerAuthorizationData" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="WorkerPosition" EntityType="Self.WorkerPosition" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AllOrders" EntityType="Self.AllOrders" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [AllOrders].[ChequeID] AS [ChequeID], 
+    [AllOrders].[ChequeDate] AS [ChequeDate], 
+    [AllOrders].[OrderDate] AS [OrderDate], 
+    [AllOrders].[OrderStatusName] AS [OrderStatusName], 
+    [AllOrders].[VerifingCode] AS [VerifingCode], 
+    [AllOrders].[ClientID] AS [ClientID], 
+    [AllOrders].[Summ] AS [Summ]
+    FROM [dbo].[AllOrders] AS [AllOrders]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="DishesView" EntityType="Self.DishesView" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [DishesView].[DishID] AS [DishID], 
+    [DishesView].[DishName] AS [DishName], 
+    [DishesView].[DishPhoto] AS [DishPhoto], 
+    [DishesView].[DishTypeName] AS [DishTypeName], 
+    [DishesView].[UnitOfMeasurementName] AS [UnitOfMeasurementName], 
+    [DishesView].[PriceMeaning] AS [PriceMeaning], 
+    [DishesView].[Composition] AS [Composition], 
+    [DishesView].[IsEnough] AS [IsEnough], 
+    [DishesView].[MaxCount] AS [MaxCount]
+    FROM [dbo].[DishesView] AS [DishesView]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="getCountOfTypeDish" EntityType="Self.getCountOfTypeDish" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [getCountOfTypeDish].[DishTypeID] AS [DishTypeID], 
+    [getCountOfTypeDish].[DishTypeName] AS [DishTypeName], 
+    [getCountOfTypeDish].[Summ] AS [Summ]
+    FROM [dbo].[getCountOfTypeDish] AS [getCountOfTypeDish]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="InfoOrderWhereID" EntityType="Self.InfoOrderWhereID" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [InfoOrderWhereID].[ChequeID] AS [ChequeID], 
+    [InfoOrderWhereID].[DishName] AS [DishName], 
+    [InfoOrderWhereID].[DishPhoto] AS [DishPhoto], 
+    [InfoOrderWhereID].[ProductCount] AS [ProductCount]
+    FROM [dbo].[InfoOrderWhereID] AS [InfoOrderWhereID]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="TableInfo" EntityType="Self.TableInfo" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [TableInfo].[ChequeID] AS [ChequeID], 
+    [TableInfo].[ChequeDate] AS [ChequeDate], 
+    [TableInfo].[ProductCount] AS [ProductCount], 
+    [TableInfo].[DishID] AS [DishID], 
+    [TableInfo].[DishName] AS [DishName], 
+    [TableInfo].[PriceMeaning] AS [PriceMeaning], 
+    [TableInfo].[TotalPrice] AS [TotalPrice], 
+    [TableInfo].[WorkerSurname] AS [WorkerSurname], 
+    [TableInfo].[WorkerName] AS [WorkerName], 
+    [TableInfo].[WorkerPatronymic] AS [WorkerPatronymic], 
+    [TableInfo].[WorkerPositionName] AS [WorkerPositionName], 
+    [TableInfo].[ClientEmal] AS [ClientEmal]
+    FROM [dbo].[TableInfo] AS [TableInfo]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_Cheque_Client" Association="Self.FK_Cheque_Client">
+      <End Role="Client" EntitySet="Client" />
+      <End Role="Cheque" EntitySet="Cheque" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Cheque_OrderStatus" Association="Self.FK_Cheque_OrderStatus">
+      <End Role="OrderStatus" EntitySet="OrderStatus" />
+      <End Role="Cheque" EntitySet="Cheque" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Cheque_Worker" Association="Self.FK_Cheque_Worker">
+      <End Role="Worker" EntitySet="Worker" />
+      <End Role="Cheque" EntitySet="Cheque" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ChequeTabPart_Cheque" Association="Self.FK_ChequeTabPart_Cheque">
+      <End Role="Cheque" EntitySet="Cheque" />
+      <End Role="ChequeTabPart" EntitySet="ChequeTabPart" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ChequeTabPart_Dish" Association="Self.FK_ChequeTabPart_Dish">
+      <End Role="Dish" EntitySet="Dish" />
+      <End Role="ChequeTabPart" EntitySet="ChequeTabPart" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ClientAuthorizationData_Client" Association="Self.FK_ClientAuthorizationData_Client">
+      <End Role="Client" EntitySet="Client" />
+      <End Role="ClientAuthorizationData" EntitySet="ClientAuthorizationData" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Dish_DishType" Association="Self.FK_Dish_DishType">
+      <End Role="DishType" EntitySet="DishType" />
+      <End Role="Dish" EntitySet="Dish" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Dish_UnitOfMeasurement" Association="Self.FK_Dish_UnitOfMeasurement">
+      <End Role="UnitOfMeasurement" EntitySet="UnitOfMeasurement" />
+      <End Role="Dish" EntitySet="Dish" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Ingredient_UnitOfMeasurement" Association="Self.FK_Ingredient_UnitOfMeasurement">
+      <End Role="UnitOfMeasurement" EntitySet="UnitOfMeasurement" />
+      <End Role="Ingredient" EntitySet="Ingredient" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Invoice_Suplier" Association="Self.FK_Invoice_Suplier">
+      <End Role="Suplier" EntitySet="Suplier" />
+      <End Role="Invoice" EntitySet="Invoice" />
+    </AssociationSet>
+    <AssociationSet Name="FK_InvoiceTabPart_Ingredient" Association="Self.FK_InvoiceTabPart_Ingredient">
+      <End Role="Ingredient" EntitySet="Ingredient" />
+      <End Role="InvoiceTabPart" EntitySet="InvoiceTabPart" />
+    </AssociationSet>
+    <AssociationSet Name="FK_InvoiceTabPart_Invoice" Association="Self.FK_InvoiceTabPart_Invoice">
+      <End Role="Invoice" EntitySet="Invoice" />
+      <End Role="InvoiceTabPart" EntitySet="InvoiceTabPart" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Price_Dish" Association="Self.FK_Price_Dish">
+      <End Role="Dish" EntitySet="Dish" />
+      <End Role="Price" EntitySet="Price" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Receipt_Dish" Association="Self.FK_Receipt_Dish">
+      <End Role="Dish" EntitySet="Dish" />
+      <End Role="Receipt" EntitySet="Receipt" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ReceiptTabPart_Ingredient" Association="Self.FK_ReceiptTabPart_Ingredient">
+      <End Role="Ingredient" EntitySet="Ingredient" />
+      <End Role="ReceiptTabPart" EntitySet="ReceiptTabPart" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ReceiptTabPart_Receipt1" Association="Self.FK_ReceiptTabPart_Receipt1">
+      <End Role="Receipt" EntitySet="Receipt" />
+      <End Role="ReceiptTabPart" EntitySet="ReceiptTabPart" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Worker_WorkerPosition" Association="Self.FK_Worker_WorkerPosition">
+      <End Role="WorkerPosition" EntitySet="WorkerPosition" />
+      <End Role="Worker" EntitySet="Worker" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WorkerAuthorizationData_Worker" Association="Self.FK_WorkerAuthorizationData_Worker">
+      <End Role="Worker" EntitySet="Worker" />
+      <End Role="WorkerAuthorizationData" EntitySet="WorkerAuthorizationData" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
